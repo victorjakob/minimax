@@ -8,7 +8,7 @@ export default function Topbar() {
   const navLinks = [
     { name: "Heim", href: "/" },
 
-    { name: "Þjónustur", href: "/services" },
+    { name: "Þjónusta", href: "/services" },
     { name: "Um okkur", href: "/about" },
     { name: "Hafðu Samband", href: "/contact" },
   ];

@@ -10,6 +10,11 @@ export default function About() {
 
   const sections = [
     {
+      title: "Skattskil",
+      description:
+        "Tökum að okkur skattskil fyrirtækja og einstaklinga. Sjáum um að skila öllum nauðsynlegum skattframtölum og fylgiskjölum á réttum tíma.",
+    },
+    {
       title: "Bókhald og reikningshald",
       description:
         "Við bjóðum upp á heildstæða bókhaldsþjónustu fyrir fyrirtæki af öllum stærðum. Nákvæmni og fagmennska eru okkar aðalsmerki.",
@@ -17,17 +22,23 @@ export default function About() {
     {
       title: "Ráðgjöf varðandi skattamál",
       description:
-        "Sérfræðingar okkar veita alhliða skattaráðgjöf og aðstoða við skattaskil fyrir einstaklinga og fyrirtæki.",
+        "Sérfræðingar okkar veita sérsniðna skattaráðgjöf fyrir einstaklinga og fyrirtæki. Við tryggjum að þú nýtir alla möguleika til skattahagræðingar og uppfyllir lagalegar skyldur án fyrirhafnar.",
     },
     {
       title: "Fjármálaráðgjöf og rekstrargreiningar",
       description:
         "Við hjálpum þér að greina fjárhagsstöðu þíns fyrirtækis og veitum ráðgjöf um hvernig hægt er að bæta reksturinn.",
     },
+
     {
       title: "Ráðgjöf varðandi lífeyrismál",
       description:
         "Fagleg ráðgjöf um lífeyrissjóði, sparnað og tryggingar til að tryggja fjárhagslegt öryggi þitt til framtíðar.",
+    },
+    {
+      title: "Ráðningarráðgjöf út frá stjörnukortalestri",
+      description:
+        "Einstök nálgun á ráðningar þar sem við notum stjörnukort til að finna fullkomna samsvörun starfsmanns og fyrirtækis.",
     },
   ];
 

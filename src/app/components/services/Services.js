@@ -14,6 +14,12 @@ const services = [
       "Fagleg og nákvæm bókhaldsþjónusta fyrir fyrirtæki af öllum stærðum. Við sjáum um bókhaldið svo þú getir einbeitt þér að rekstrinum.",
   },
   {
+    title: "Skattskil",
+    image: "/book1.jpg",
+    description:
+      "Tökum að okkur skattskil fyrirtækja og einstaklinga. Sjáum um að skila öllum nauðsynlegum skattframtölum og fylgiskjölum á réttum tíma.",
+  },
+  {
     title: "Ráðgjöf varðandi skattamál",
     image: "/book4.jpg",
     description:

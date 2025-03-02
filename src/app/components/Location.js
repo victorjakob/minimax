@@ -36,7 +36,8 @@ export default function Location() {
               </p>
               <div className="space-y-2">
                 <p>Sími: 547 2211</p>
-                <p>Netfang: fyrirspurn@minimax.is</p>
+                <p>Gsm: 897 2833</p>
+                <p>Netfang: Gunnar@MiniMax.is </p>
                 <p>
                   <br /> Studio E8 <br /> Engihjalli 8 <br /> 200 Kópavogur
                 </p>

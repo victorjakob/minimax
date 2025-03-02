@@ -2,17 +2,55 @@
 
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export default function Contact() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // Handle form submission
+  const [status, setStatus] = useState({
+    type: null,
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus({
+          type: "success",
+          message: "Skilaboð send! Við verðum í sambandi fljótlega.",
+        });
+        reset();
+      } else {
+        setStatus({
+          type: "error",
+          message: result.error || "Villa kom upp við að senda skilaboð.",
+        });
+      }
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: "Villa kom upp við að senda skilaboð.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -121,13 +159,26 @@ export default function Contact() {
               ></textarea>
             </div>
 
+            {status.message && (
+              <div
+                className={`rounded-lg p-4 ${
+                  status.type === "success"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-red-100 text-red-700"
+                }`}
+              >
+                {status.message}
+              </div>
+            )}
+
             <motion.button
               type="submit"
-              className="w-full rounded-full bg-main px-6 py-3 text-second transition-colors hover:bg-gray-700"
+              className="w-full rounded-full bg-main px-6 py-3 text-second transition-colors hover:bg-gray-700 disabled:opacity-70"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              disabled={isSubmitting}
             >
-              Senda
+              {isSubmitting ? "Sendi..." : "Senda"}
             </motion.button>
           </form>
         </motion.div>

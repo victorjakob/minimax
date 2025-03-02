@@ -42,8 +42,10 @@ export default function Footer() {
               <br /> Engihjalli 8<br />
               200 Kópavogur
             </p>
-            <p className="text-sm md:text-xs">+354 547 2211</p>
-            <p className="text-sm md:text-xs">fyrirspurn@minimax.is</p>
+            <p className="text-sm md:text-xs">Sími: 547 2210</p>
+            <p className="text-sm md:text-xs">Gsm: 897 2833</p>
+
+            <p className="text-sm md:text-xs">gunnar@minimax.is </p>
           </div>
         </div>
 

@@ -4,27 +4,29 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export async function POST(req) {
   try {
-    const { name, email, message } = await req.json();
+    const { name, email, message, phone, company } = await req.json();
 
-    if (!email || !name || !message) {
+    if (!email || !name || !message || !phone) {
       return new Response(
         JSON.stringify({ error: "Missing required fields." }),
         {
           status: 400,
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
     }
 
     const msg = {
-      to: "gunnarbachmann1@gmail.com", // Your verified email
-      from: "gunnarbachmann1@gmail.com", // Use your verified sender email
+      to: "viggijakob@gmail.com", // Your verified email
+      from: "viggijakob@gmail.com", // Use your verified sender email
       replyTo: email, // The user's email for reply
       subject: `New Message from ${name}`, // Dynamic subject line
       text: message,
       html: `
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
@@ -37,7 +39,7 @@ export async function POST(req) {
       {
         status: 200,
         headers: { "Content-Type": "application/json" },
-      }
+      },
     );
   } catch (error) {
     console.error("Error sending email:", error);
