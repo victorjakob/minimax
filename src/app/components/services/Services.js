@@ -15,7 +15,7 @@ const services = [
   },
   {
     title: "Skattskil",
-    image: "/book1.jpg",
+    image: "/book3.jpg",
     description:
       "Tökum að okkur skattskil fyrirtækja og einstaklinga. Sjáum um að skila öllum nauðsynlegum skattframtölum og fylgiskjölum á réttum tíma.",
   },

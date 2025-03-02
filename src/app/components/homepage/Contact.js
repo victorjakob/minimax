@@ -62,7 +62,7 @@ export default function Contact() {
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 0.9, x: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
         >
           <h2 className="text-3xl font-light md:text-4xl lg:text-5xl">
             Sendu okkur skilaboð
@@ -79,7 +79,7 @@ export default function Contact() {
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
         >
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid gap-4 md:grid-cols-2">
