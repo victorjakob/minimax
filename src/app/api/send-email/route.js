@@ -5,7 +5,7 @@
 //   CONTACT_TO      – where form messages are delivered
 
 const FROM = process.env.RESEND_FROM || "MiniMax <onboarding@resend.dev>";
-const TO = process.env.CONTACT_TO || "gunnarbachmann1@gmail.com";
+const TO = process.env.CONTACT_TO || "gunnar@minimax.is";
 
 const escape = (s = "") =>
   String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
