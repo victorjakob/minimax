@@ -1,52 +1,57 @@
-import sgMail from "@sendgrid/mail";
+// Contact form → Resend (https://resend.com/docs/api-reference/emails/send-email)
+// Env vars (set in .env.local and in Vercel):
+//   RESEND_API_KEY  – required
+//   RESEND_FROM     – e.g. "MiniMax <form@minimax.is>" (domain must be verified in Resend)
+//   CONTACT_TO      – where form messages are delivered
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const FROM = process.env.RESEND_FROM || "MiniMax <onboarding@resend.dev>";
+const TO = process.env.CONTACT_TO || "gunnarbachmann1@gmail.com";
+
+const escape = (s = "") =>
+  String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+const json = (body, status) =>
+  new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
 
 export async function POST(req) {
   try {
     const { name, email, message, phone, company } = await req.json();
 
     if (!email || !name || !message || !phone) {
-      return new Response(
-        JSON.stringify({ error: "Missing required fields." }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json" },
-        },
-      );
+      return json({ error: "Missing required fields." }, 400);
     }
 
-    const msg = {
-      to: "gunnarbachmann1@gmail.com", // Your verified email
-      from: "gunnarbachmann1@gmail.com", // Use your verified sender email
-      replyTo: email, // The user's email for reply
-      subject: `New Message from ${name}`, // Dynamic subject line
-      text: message,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    };
-
-    await sgMail.send(msg);
-
-    return new Response(
-      JSON.stringify({ message: "Email sent successfully!" }),
-      {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({
+        from: FROM,
+        to: [TO],
+        reply_to: email,
+        subject: `New Message from ${name}`,
+        text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n${company ? `Company: ${company}\n` : ""}\n${message}`,
+        html: `
+          <p><strong>Name:</strong> ${escape(name)}</p>
+          <p><strong>Email:</strong> ${escape(email)}</p>
+          <p><strong>Phone:</strong> ${escape(phone)}</p>
+          ${company ? `<p><strong>Company:</strong> ${escape(company)}</p>` : ""}
+          <p><strong>Message:</strong></p>
+          <p style="white-space:pre-wrap">${escape(message)}</p>
+        `,
+      }),
+    });
+
+    if (!res.ok) {
+      console.error("Resend error:", res.status, await res.text());
+      return json({ error: "Failed to send email." }, 500);
+    }
+
+    return json({ message: "Email sent successfully!" }, 200);
   } catch (error) {
     console.error("Error sending email:", error);
-
-    return new Response(JSON.stringify({ error: "Failed to send email." }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    return json({ error: "Failed to send email." }, 500);
   }
 }
