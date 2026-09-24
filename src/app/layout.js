@@ -1,6 +1,7 @@
 import "./globals.css";
 import Topbar from "./components/Topbar";
 import Footer from "./components/Footer";
+import Script from "next/script";
 
 // Import Archivo fonts
 
@@ -74,6 +75,13 @@ export default function RootLayout({ children }) {
         <Topbar />
         {children}
         <Footer />
+        {/* Cloudflare Web Analytics: cookieless page views, read by the Victory Studio dashboard */}
+        <Script
+          id="cf-web-analytics"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          strategy="afterInteractive"
+          data-cf-beacon='{"token": "27abc0f2aa9445beb025a634eee8d2b7"}'
+        />
       </body>
     </html>
   );
