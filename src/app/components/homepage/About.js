@@ -64,7 +64,7 @@ export default function About() {
               href="/contact"
               className="inline-block w-[70%] rounded-3xl bg-white px-8 py-4 text-center text-base font-light tracking-wide text-black transition-colors hover:bg-slate-300 md:w-auto"
             >
-              Hafa Samband
+              Hafðu samband
             </Link>
           </motion.div>
           <motion.div
@@ -76,7 +76,7 @@ export default function About() {
               href="/services"
               className="mt-4 inline-block w-[70%] rounded-3xl border-2 border-white px-8 py-4 text-center text-base font-light tracking-wide text-white transition-colors hover:text-black hover:text-slate-200 md:w-auto"
             >
-              Þjónustur Okkar
+              Þjónustan okkar
             </Link>
           </motion.div>
         </div>

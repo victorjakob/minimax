@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { EMAIL, PHONES, tel } from "../lib/contact";
 
 export default function Footer() {
   return (
@@ -8,9 +8,9 @@ export default function Footer() {
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           {/* Logo Section */}
           <Link href="/" className="flex justify-center md:justify-start">
-            <h1 className="text-3xl font-extralight tracking-tighter md:text-4xl">
+            <span className="text-3xl font-extralight tracking-tighter md:text-4xl">
               MiniMax
-            </h1>
+            </span>
           </Link>
 
           {/* Links Section */}
@@ -19,7 +19,7 @@ export default function Footer() {
               href="/services"
               className="text-base hover:underline md:text-sm"
             >
-              Þjónustur
+              Þjónusta
             </Link>
             <Link
               href="/about"
@@ -31,7 +31,7 @@ export default function Footer() {
               href="/contact"
               className="text-base hover:underline md:text-sm"
             >
-              Hafa samband
+              Hafðu samband
             </Link>
             <Link
               href="/personuvernd"
@@ -48,10 +48,13 @@ export default function Footer() {
               <br /> Engihjalli 8<br />
               200 Kópavogur
             </p>
-            <p className="text-sm md:text-xs">Sími: 547 2210</p>
-            <p className="text-sm md:text-xs">Gsm: 897 2833</p>
+            {PHONES.map((p) => (
+              <a key={p.number} href={tel(p.number)} className="text-sm hover:underline md:text-xs">
+                {p.label}: {p.number}
+              </a>
+            ))}
 
-            <p className="text-sm md:text-xs">gunnar@minimax.is </p>
+            <a href={`mailto:${EMAIL}`} className="text-sm hover:underline md:text-xs">{EMAIL}</a>
           </div>
         </div>
 

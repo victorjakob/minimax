@@ -17,7 +17,7 @@ export default function About3() {
           <div className="relative h-[300px] w-full overflow-hidden rounded-lg md:h-[500px]">
             <Image
               src="/meeting.jpg"
-              alt="Professional office environment"
+              alt="Vinnuaðstaða á skrifstofu MiniMax"
               fill
               className="object-cover"
             />
@@ -31,9 +31,9 @@ export default function About3() {
           transition={{ duration: 0.8 }}
           className="mx-auto w-[85%] space-y-4 md:w-full md:space-y-6 lg:flex-1"
         >
-          <h1 className="text-3xl font-light leading-tight tracking-tighter sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-light leading-tight tracking-tighter sm:text-4xl md:text-5xl">
             Fagleg þjónusta í fyrirrúmi
-          </h1>
+          </h2>
           <p className="text-base leading-relaxed text-gray-700 sm:text-lg lg:leading-loose">
             Félagið Minimax ehf var stofnað í febrúar 2003. Það hefur aðsetur í
             dag að Engihjalla 8, Kópavogi. Starfsmenn félagsins eru þrír.

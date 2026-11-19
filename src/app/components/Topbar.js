@@ -10,7 +10,7 @@ export default function Topbar() {
 
     { name: "Þjónusta", href: "/services" },
     { name: "Um okkur", href: "/about" },
-    { name: "Hafðu Samband", href: "/contact" },
+    { name: "Hafðu samband", href: "/contact" },
   ];
 
   const [isAtTop, setIsAtTop] = useState(true);
@@ -40,9 +40,9 @@ export default function Topbar() {
         <div className="container mx-auto flex h-full w-[90%] items-center justify-between px-5">
           {/* Logo Section */}
           <Link href="/" className="flex h-full flex-shrink-0 items-center">
-            <h1 className="text-4xl font-extralight tracking-tighter">
+            <span className="text-4xl font-extralight tracking-tighter">
               MiniMax
-            </h1>
+            </span>
           </Link>
 
           {/* Navigation Links */}
@@ -60,6 +60,7 @@ export default function Topbar() {
 
           {/* Mobile Menu Button */}
           <button
+            aria-label="Opna valmynd"
             className="text-main focus:outline-none md:hidden"
             onClick={() => setIsSidebarOpen(true)}
           >
@@ -84,6 +85,8 @@ export default function Topbar() {
         initial={{ x: "100%" }}
         animate={{ x: isSidebarOpen ? 0 : "100%" }}
         transition={{ type: "tween", duration: 0.3 }}
+        aria-hidden={!isSidebarOpen}
+        inert={!isSidebarOpen}
       >
         <div className="flex justify-end p-5">
           <button
@@ -120,7 +123,7 @@ export default function Topbar() {
           ))}
         </nav>
         <div className="absolute bottom-0 w-full border-t border-current p-5 text-center text-sm">
-          <p>© 2025 TFT Fasteign™</p>
+          <p>© {new Date().getFullYear()} MiniMax™</p>
         </div>
       </motion.div>
 

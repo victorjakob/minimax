@@ -55,7 +55,7 @@ const businessJsonLd = {
   url: SITE,
   image: `${SITE}/opengraph-image.jpg`,
   email: "gunnar@minimax.is",
-  telephone: "+354 897 2833",
+  telephone: "+354 547 2210",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Engihjalli 8",

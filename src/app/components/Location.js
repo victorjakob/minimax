@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { EMAIL, PHONES, tel } from "../lib/contact";
 
 // Google Maps sets tracking cookies, so the map only loads when the visitor asks for it.
 const MAP_SRC =
@@ -66,9 +67,16 @@ export default function Location() {
                 Hringdu eða sendu okkur skilaboð áður en þú kemur
               </p>
               <div className="space-y-2">
-                <p>Sími: 547 2211</p>
-                <p>Gsm: 897 2833</p>
-                <p>Netfang: Gunnar@MiniMax.is </p>
+                {PHONES.map((p) => (
+                  <p key={p.number}>
+                    {p.label}:{" "}
+                    <a href={tel(p.number)} className="hover:underline">{p.number}</a>
+                  </p>
+                ))}
+                <p>
+                  Netfang:{" "}
+                  <a href={`mailto:${EMAIL}`} className="hover:underline">{EMAIL}</a>
+                </p>
                 <p>
                   <br /> Studio E8 <br /> Engihjalli 8 <br /> 200 Kópavogur
                 </p>

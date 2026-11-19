@@ -22,7 +22,7 @@ export default function AboutHero() {
       <div className="absolute inset-0">
         <Image
           src="/office1.jpg"
-          alt="About Us Hero"
+          alt="Skrifstofa MiniMax í Studio E8, Kópavogi"
           fill
           className="object-cover"
           priority

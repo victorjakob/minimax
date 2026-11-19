@@ -14,18 +14,18 @@ export default function About2() {
           transition={{ duration: 0.8 }}
           className="mx-auto w-[85%] space-y-4 md:w-full md:space-y-6 lg:flex-1"
         >
-          <h1 className="font-libre-bodoni text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="font-libre-bodoni text-3xl font-light tracking-tight sm:text-4xl md:text-5xl">
             Okkar þekking er þín stoð
-          </h1>
+          </h2>
           <p className="text-base leading-relaxed text-gray-700 sm:text-lg lg:leading-loose">
             Við höfum samanlagt margra áratuga reynslu af hvers konar reksti og
             stýrt fjölmörgum félögum í margskonar rekstri í gegnum árin. Við
             kappkostum við að veita viðskiptavinum okkar faglega aðstoð í þeim
             fjölmörgu verkefnum sem snerta rekstur einyrkja og fyrirtækja.
           </p>
-          <h2 className="text-xl font-light tracking-tight sm:text-2xl md:text-3xl lg:pt-10">
+          <h3 className="text-xl font-light tracking-tight sm:text-2xl md:text-3xl lg:pt-10">
             Velkomin í fjölbreyttan hóp ánægðra viðskiptavina
-          </h2>
+          </h3>
         </motion.div>
 
         {/* Image */}
@@ -38,7 +38,7 @@ export default function About2() {
           <div className="relative h-[300px] w-full overflow-hidden rounded-lg md:h-[400px]">
             <Image
               src="/suits.jpg"
-              alt="Professional office environment"
+              alt="Vinnuaðstaða á skrifstofu MiniMax"
               fill
               className="object-cover"
             />
