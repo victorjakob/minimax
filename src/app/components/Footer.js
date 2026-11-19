@@ -33,6 +33,12 @@ export default function Footer() {
             >
               Hafa samband
             </Link>
+            <Link
+              href="/personuvernd"
+              className="text-base hover:underline md:text-sm"
+            >
+              Persónuvernd
+            </Link>
           </div>
 
           {/* Contact Information */}
@@ -53,7 +59,7 @@ export default function Footer() {
 
         {/* Copyright Section */}
         <span className="block text-center text-sm md:text-xs">
-          © 2003{" "}
+          © 2003–{new Date().getFullYear()}{" "}
           <Link href="/" className="font-semibold hover:underline">
             MiniMax™
           </Link>

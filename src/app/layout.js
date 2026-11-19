@@ -3,15 +3,16 @@ import Topbar from "./components/Topbar";
 import Footer from "./components/Footer";
 import Script from "next/script";
 
-// Import Archivo fonts
+const SITE = "https://www.minimax.is";
 
 export const metadata = {
+  metadataBase: new URL(SITE),
   title: {
-    default: "MiniMax",
-    template: "%s - MiniMax - Bókhaldsþjónusta", // Dynamic title templates
+    default: "MiniMax · Bókhaldsþjónusta í Kópavogi",
+    template: "%s · MiniMax",
   },
   description:
-    "Fagleg og áreiðanleg bókhaldsþjónusta fyrir einstaklinga og fyrirtæki",
+    "Fagleg og áreiðanleg bókhaldsþjónusta, skattskil og ráðgjöf fyrir einstaklinga og fyrirtæki. MiniMax, Engihjalli 8, Kópavogi.",
   keywords: [
     "bókhald",
     "bókhaldsþjónusta",
@@ -22,56 +23,57 @@ export const metadata = {
     "bókhaldsstofa",
     "fyrirtækjaþjónusta",
   ],
-  authors: [{ name: "MiniMax", url: "https://minimax.is" }],
+  authors: [{ name: "MiniMax", url: SITE }],
   creator: "MiniMax",
   publisher: "MiniMax",
   openGraph: {
     siteName: "MiniMax",
-    locale: "is_IS", // Icelandic locale
+    locale: "is_IS",
     type: "website",
-    url: "https://minimax.is",
-    title: "MiniMax - Fagleg bókhaldsþjónusta",
+    title: "MiniMax · Fagleg bókhaldsþjónusta",
     description:
       "Fagleg og áreiðanleg bókhaldsþjónusta fyrir einstaklinga og fyrirtæki",
-    images: [
-      {
-        url: "/desk.jpg", // Using the desk image from the WhoWeAre component
-        width: 1200,
-        height: 630,
-        alt: "MiniMax Bókhaldsþjónusta",
-      },
-    ],
+    // The share image is app/opengraph-image.jpg (picked up automatically).
   },
-
   robots: {
     index: true,
     follow: true,
   },
-  viewport: "width=device-width, initial-scale=1.0", // Mobile responsiveness
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#2a2829",
+};
+
+// Business details for Google (shown in search results and on Maps)
+const businessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  name: "MiniMax",
+  url: SITE,
+  image: `${SITE}/opengraph-image.jpg`,
+  email: "gunnar@minimax.is",
+  telephone: "+354 897 2833",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Engihjalli 8",
+    postalCode: "200",
+    addressLocality: "Kópavogur",
+    addressCountry: "IS",
+  },
+  areaServed: "IS",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="is">
-      <head>
-        {/* Google Analytics */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-VB19NHE62T"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-VB19NHE62T');
-              `,
-          }}
-        />
-      </head>
       <body className={`font-elisabethische antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }}
+        />
         <Topbar />
         {children}
         <Footer />

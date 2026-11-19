@@ -3,6 +3,10 @@ import Contact from "./components/homepage/Contact";
 import HeroHome from "./components/homepage/HeroHome";
 import WhoWeAre from "./components/homepage/WhoWeAre";
 
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
 export default function Home() {
   return (
     <div>

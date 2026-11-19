@@ -1,8 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 
+// Google Maps sets tracking cookies, so the map only loads when the visitor asks for it.
+const MAP_SRC =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1787.5132740553195!2d-21.85818489999999!3d64.10981519999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48d6735b5b6a54db%3A0xea55745367827c1f!2sStudio%20E8!5e1!3m2!1sen!2sis!4v1736613372641!5m2!1sen!2sis";
+
 export default function Location() {
+  const [showMap, setShowMap] = useState(false);
   return (
     <section className="pb-20">
       <div className="container mx-auto px-4">
@@ -13,16 +19,41 @@ export default function Location() {
           className="grid items-center gap-8 rounded-lg bg-background p-8 md:grid-cols-2"
         >
           <div className="h-[400px] w-full overflow-hidden rounded-lg">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1787.5132740553195!2d-21.85818489999999!3d64.10981519999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48d6735b5b6a54db%3A0xea55745367827c1f!2sStudio%20E8!5e1!3m2!1sen!2sis!4v1736613372641!5m2!1sen!2sis"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-lg"
-            ></iframe>
+            {showMap ? (
+              <iframe
+                src={MAP_SRC}
+                title="Kort: Studio E8, Engihjalli 8, Kópavogi"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-lg"
+              ></iframe>
+            ) : (
+              <div className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-lg bg-gray-100 p-6 text-center text-main">
+                <p className="text-lg">Studio E8, Engihjalli 8, 200 Kópavogur</p>
+                <button
+                  type="button"
+                  onClick={() => setShowMap(true)}
+                  className="border border-main px-8 py-2.5 text-sm transition-all duration-300 hover:bg-main hover:text-white"
+                >
+                  Sýna kort
+                </button>
+                <p className="max-w-xs text-xs text-gray-500">
+                  Kortið er frá Google Maps, sem notar vafrakökur.{" "}
+                  <a
+                    className="underline"
+                    href="https://maps.google.com/?q=Engihjalli+8,+200+K%C3%B3pavogur"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Opna í Google Maps
+                  </a>
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="text-main">
