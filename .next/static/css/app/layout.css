@@ -820,6 +820,12 @@ video {
 .gap-3 {
   gap: 0.75rem;
 }
+.gap-x-10 {
+  column-gap: 2.5rem;
+}
+.gap-y-20 {
+  row-gap: 5rem;
+}
 .space-x-10 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(2.5rem * var(--tw-space-x-reverse));
@@ -998,6 +1004,9 @@ video {
 .object-cover {
   object-fit: cover;
 }
+.object-center {
+  object-position: center;
+}
 .p-3 {
   padding: 0.75rem;
 }
@@ -1134,6 +1143,10 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
 }
 .font-bold {
   font-weight: 700;
@@ -1817,6 +1830,38 @@ body {
 
   .lg\:leading-loose {
     line-height: 2;
+  }
+}
+
+
+@media (min-width: 1280px) {
+
+  .xl\:h-56 {
+    height: 14rem;
+  }
+
+  .xl\:w-56 {
+    width: 14rem;
+  }
+
+  .xl\:w-\[90\%\] {
+    width: 90%;
+  }
+
+  .xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+
+@media (min-width: 1536px) {
+
+  .\32xl\:h-64 {
+    height: 16rem;
+  }
+
+  .\32xl\:w-64 {
+    width: 16rem;
   }
 }
 
