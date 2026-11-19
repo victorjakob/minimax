@@ -3,6 +3,8 @@
 //   RESEND_API_KEY  – required
 //   RESEND_FROM     – e.g. "MiniMax <form@minimax.is>" (domain must be verified in Resend)
 //   CONTACT_TO      – where form messages are delivered
+//   NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY – every message is also saved
+//     to minimax_contact_submissions (insert-only for the site), so nothing is lost if email fails
 
 import { EMAIL, PHONES } from "../../lib/contact";
 
@@ -24,6 +26,25 @@ const limited = (ip) => {
   hits.set(ip, recent);
   return recent.length > 5;
 };
+
+// Saves the message in Supabase. Returns true when stored.
+async function store(row) {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return false;
+  try {
+    const res = await fetch(`${url}/rest/v1/minimax_contact_submissions`, {
+      method: "POST",
+      headers: { apikey: key, "Content-Type": "application/json", Prefer: "return=minimal" },
+      body: JSON.stringify(row),
+    });
+    if (!res.ok) console.error("Supabase insert failed:", res.status, await res.text());
+    return res.ok;
+  } catch (e) {
+    console.error("Supabase insert failed:", e);
+    return false;
+  }
+}
 
 const send = (payload) =>
   fetch("https://api.resend.com/emails", {
@@ -59,6 +80,15 @@ export async function POST(req) {
     }
     if (message.length > 5000 || name.length > 200) return json({ error: "Of langt." }, 400);
 
+    const stored = await store({
+      name: name.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+      company: company.trim() || null,
+      message: message.trim(),
+      page: page || null,
+    });
+
     const firstName = name.trim().split(/\s+/)[0];
     const rows = [
       ["Nafn", name],
@@ -86,7 +116,8 @@ export async function POST(req) {
 
     if (!res.ok) {
       console.error("Resend error:", res.status, await res.text());
-      return json({ error: "Failed to send email." }, 500);
+      // Saved in the database, so Gunnar still gets it; only fail if it's lost entirely.
+      if (!stored) return json({ error: "Failed to send email." }, 500);
     }
 
     // 2) Confirmation to the visitor (best effort — never fails the request).
