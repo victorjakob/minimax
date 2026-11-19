@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Topbar() {
   const navLinks = [
@@ -40,9 +41,14 @@ export default function Topbar() {
         <div className="container mx-auto flex h-full w-[90%] items-center justify-between px-5">
           {/* Logo Section */}
           <Link href="/" className="flex h-full flex-shrink-0 items-center">
-            <span className="text-4xl font-extralight tracking-tighter">
-              MiniMax
-            </span>
+            <Image
+              src="/brand/minimax-larett-litur.svg"
+              alt="MiniMax"
+              width={748}
+              height={160}
+              priority
+              className={`w-auto transition-all duration-300 ${isAtTop ? "h-9 md:h-10" : "h-7 md:h-8"}`}
+            />
           </Link>
 
           {/* Navigation Links */}
@@ -51,7 +57,7 @@ export default function Topbar() {
               <Link
                 key={index}
                 href={link.href}
-                className="relative pl-3 text-base font-extralight tracking-wide transition-all after:absolute after:-bottom-4 after:left-1/2 after:h-[2px] after:w-[80%] after:origin-center after:-translate-x-1/2 after:scale-x-0 after:transform after:bg-current after:transition-transform after:duration-300 after:content-[''] hover:pl-1 hover:tracking-widest hover:text-gray-700 hover:after:scale-x-100"
+                className="relative pl-3 text-base font-extralight tracking-wide transition-all after:absolute after:-bottom-4 after:left-1/2 after:h-[2px] after:w-[80%] after:origin-center after:-translate-x-1/2 after:scale-x-0 after:transform after:bg-brand after:transition-transform after:duration-300 after:content-[''] hover:pl-1 hover:tracking-widest hover:after:scale-x-100"
               >
                 {link.name}
               </Link>
@@ -88,7 +94,8 @@ export default function Topbar() {
         aria-hidden={!isSidebarOpen}
         inert={!isSidebarOpen}
       >
-        <div className="flex justify-end p-5">
+        <div className="flex items-center justify-between p-5">
+          <Image src="/brand/minimax-larett-litur.svg" alt="" width={748} height={160} className="ml-2 mt-7 h-6 w-auto" />
           <button
             aria-label="Close mobile menu"
             onClick={() => setIsSidebarOpen(false)}
@@ -123,7 +130,7 @@ export default function Topbar() {
           ))}
         </nav>
         <div className="absolute bottom-0 w-full border-t border-current p-5 text-center text-sm">
-          <p>© {new Date().getFullYear()} MiniMax™</p>
+          <p>© {new Date().getFullYear()} MiniMax</p>
         </div>
       </motion.div>
 

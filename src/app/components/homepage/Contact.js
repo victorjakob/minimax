@@ -6,7 +6,7 @@ import { useState } from "react";
 import { EMAIL, PHONES, tel } from "../../lib/contact";
 
 const inputBase =
-  "mt-1 w-full border bg-white/60 p-3 text-main placeholder:text-gray-400 transition-colors focus:bg-white focus:outline-none focus:ring-2 focus:ring-main/20";
+  "mt-1 w-full border bg-white/60 p-3 text-main placeholder:text-gray-400 transition-colors focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand/20";
 
 function Field({ id, label, optional, error, children }) {
   return (
@@ -64,7 +64,7 @@ export default function Contact() {
   const ring = (name) =>
     errors[name]
       ? "border-red-400 focus:border-red-500"
-      : "border-gray-300 focus:border-main";
+      : "border-gray-300 focus:border-brand";
 
   const aria = (name) => ({
     id: name,
@@ -113,7 +113,7 @@ export default function Contact() {
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="flex min-h-[420px] flex-col items-center justify-center rounded-[2rem] border border-main/10 bg-white/50 px-8 py-14 text-center text-main"
               >
-                <svg viewBox="0 0 52 52" className="mb-8 h-16 w-16" aria-hidden="true">
+                <svg viewBox="0 0 52 52" className="mb-8 h-16 w-16 text-brand" aria-hidden="true">
                   <motion.circle
                     cx="26" cy="26" r="24" fill="none" stroke="currentColor" strokeWidth="1.5"
                     initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
@@ -242,7 +242,7 @@ export default function Contact() {
 
                 <motion.button
                   type="submit"
-                  className="flex w-full items-center justify-center gap-3 rounded-full bg-main px-6 py-3 text-second transition-colors hover:bg-gray-700 disabled:cursor-wait disabled:opacity-80"
+                  className="flex w-full items-center justify-center gap-3 rounded-full bg-main px-6 py-3 text-white transition-colors hover:bg-brand-darker disabled:cursor-wait disabled:opacity-80"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}

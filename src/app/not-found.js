@@ -11,7 +11,7 @@ export default function NotFound() {
         Hlekkurinn gæti verið úreltur eða slóðin rangt slegin inn.
       </p>
       <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-        <Link href="/" className="rounded-full bg-main px-8 py-3 text-second transition-colors hover:bg-gray-700">
+        <Link href="/" className="rounded-full bg-main px-8 py-3 text-white transition-colors hover:bg-brand-darker">
           Á forsíðu
         </Link>
         <Link href="/contact" className="rounded-full border border-main px-8 py-3 transition-colors hover:bg-main hover:text-second">

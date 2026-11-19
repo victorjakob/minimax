@@ -44,7 +44,7 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#2a2829",
+  themeColor: "#00aa63",
 };
 
 // Business details for Google (shown in search results and on Maps)
@@ -54,6 +54,7 @@ const businessJsonLd = {
   name: "MiniMax",
   url: SITE,
   image: `${SITE}/opengraph-image.jpg`,
+  logo: `${SITE}/brand/minimax-larett-litur-email.png`,
   email: "gunnar@minimax.is",
   telephone: "+354 547 2210",
   address: {

@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #e0e0da;
+  --background: #f4f2ee; /* warm paper: calm, not clinical */
   --foreground: #2a2829;
   --font-color-main: #2a2829; /* Main font color */
   --font-color-second: #ffffff; /* Secondary font color */
+  --brand: #00aa63; /* MiniMax green (logo) */
+  --brand-light: #38ce86; /* MiniMax light green (logo) */
+  --brand-dark: #00804a; /* buttons/links: 5:1 contrast with white text */
+  --brand-darker: #006b3e; /* hover */
 }
 
 

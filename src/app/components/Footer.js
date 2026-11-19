@@ -1,16 +1,21 @@
 import Link from "next/link";
+import Image from "next/image";
 import { EMAIL, PHONES, tel } from "../lib/contact";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-foreground bg-background text-main shadow">
+    <footer className="border-t border-black/10 bg-background text-main shadow">
       <div className="mx-auto w-full max-w-[90%] p-4 md:p-6 md:py-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           {/* Logo Section */}
           <Link href="/" className="flex justify-center md:justify-start">
-            <span className="text-3xl font-extralight tracking-tighter md:text-4xl">
-              MiniMax
-            </span>
+            <Image
+              src="/brand/minimax-larett-litur.svg"
+              alt="MiniMax"
+              width={748}
+              height={160}
+              className="h-9 w-auto md:h-10"
+            />
           </Link>
 
           {/* Links Section */}
@@ -64,9 +69,9 @@ export default function Footer() {
         <span className="block text-center text-sm md:text-xs">
           © 2003–{new Date().getFullYear()}{" "}
           <Link href="/" className="font-semibold hover:underline">
-            MiniMax™
+            MiniMax
           </Link>
-          . All Rights Reserved.
+          . Allur réttur áskilinn.
         </span>
       </div>
     </footer>

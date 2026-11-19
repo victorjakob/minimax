@@ -53,7 +53,7 @@ export default function WhoWeAre() {
               href="/about"
               className="inline-block rounded border-2 border-main px-6 py-2 text-main transition-colors hover:bg-main hover:text-second"
             >
-              Lesa Meira
+              Lesa meira
             </Link>
           </motion.div>
         </motion.div>

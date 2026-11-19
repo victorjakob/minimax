@@ -57,9 +57,9 @@ const send = (payload) =>
   });
 
 const shell = (inner) => `
-  <div style="background:#e0e0da;padding:32px 16px;font-family:Georgia,serif;color:#2a2829">
-    <div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:16px;padding:32px">
-      <div style="font-size:26px;font-weight:300;letter-spacing:-0.5px;margin-bottom:24px">MiniMax</div>
+  <div style="background:#f4f2ee;padding:32px 16px;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#2a2829">
+    <div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:16px;padding:32px;border-top:4px solid #00aa63">
+      <img src="https://www.minimax.is/brand/minimax-larett-litur-email.png" width="160" height="34" alt="MiniMax" style="display:block;border:0;margin-bottom:28px" />
       ${inner}
     </div>
   </div>`;

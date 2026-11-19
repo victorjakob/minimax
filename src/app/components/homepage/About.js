@@ -62,7 +62,7 @@ export default function About() {
           >
             <Link
               href="/contact"
-              className="inline-block w-[70%] rounded-3xl bg-white px-8 py-4 text-center text-base font-light tracking-wide text-black transition-colors hover:bg-slate-300 md:w-auto"
+              className="inline-block w-[70%] rounded-3xl bg-white px-8 py-4 text-center text-base font-light tracking-wide text-main transition-colors hover:bg-white/85 md:w-auto"
             >
               Hafðu samband
             </Link>
@@ -74,7 +74,7 @@ export default function About() {
           >
             <Link
               href="/services"
-              className="mt-4 inline-block w-[70%] rounded-3xl border-2 border-white px-8 py-4 text-center text-base font-light tracking-wide text-white transition-colors hover:text-black hover:text-slate-200 md:w-auto"
+              className="mt-4 inline-block w-[70%] rounded-3xl border-2 border-white px-8 py-4 text-center text-base font-light tracking-wide text-white transition-colors hover:bg-white/10 md:w-auto"
             >
               Þjónustan okkar
             </Link>
